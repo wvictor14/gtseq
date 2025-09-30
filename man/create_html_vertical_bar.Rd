@@ -2,7 +2,7 @@
 % Please edit documentation in R/consensus.R
 \name{create_html_vertical_bar}
 \alias{create_html_vertical_bar}
-\title{This version sets the parent div to be 100\% width and height}
+\title{Create a simply html bar chart}
 \usage{
 create_html_vertical_bar(
   bar_height = 0.5,
@@ -19,5 +19,9 @@ create_html_vertical_bar(
 \item{parent_div_width}{valid css unit for width of the parent div}
 }
 \description{
-This version sets the parent div to be 100\% width and height
+arent div is set to 100\% width and height
+}
+\examples{
+
+create_html_vertical_bar(0.5)
 }

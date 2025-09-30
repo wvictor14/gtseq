@@ -2,10 +2,20 @@
 % Please edit documentation in R/consensus.R
 \name{get_consensus_return_bar}
 \alias{get_consensus_return_bar}
-\title{gets the consensus of the vector x, and returns an html bar}
+\title{Create a bar chart based on consensu}
 \usage{
 get_consensus_return_bar(x)
 }
+\arguments{
+\item{x}{a vector}
+}
+\value{
+html div
+}
 \description{
 gets the consensus of the vector x, and returns an html bar
+}
+\examples{
+
+get_consensus_return_bar(c("dog", "dog", "cat"))
 }

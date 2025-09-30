@@ -19,3 +19,8 @@ returns a 1-length named character vector of the most frequent amino acid, where
 \details{
 Does not handle ties (one of the ties will be returned)
 }
+\examples{
+
+get_consensus(c("dog", "dog", "cat"))
+
+}
