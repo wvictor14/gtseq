@@ -2,4 +2,5 @@
 
 export(apply_color_to_aa)
 export(create_html_vertical_bar)
+export(generate_breaks)
 export(get_consensus)
