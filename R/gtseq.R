@@ -1,3 +1,10 @@
+#' function that takes a dataframe, with sequences in one column, and creates a
+#' gt table
+#' 
+#' - splits the seq column into 1 per element
+#' - applies a color palette to amino acids
+#' 
+#' @return a gt table object
 #' @examples
 #'
 #' msa |> gtseq(seq_column = seq)
@@ -36,7 +43,7 @@ gtseq <- function(
       columns = contains(names_prefix),
       fns = list(
         Consensus ~ get_consensus_return_bar(.) |>
-          div(style = "width:100%;height:50px;") |>
+          htmltools::div(style = "width:100%;height:50px;") |>
           as.character(),
         Sequence ~ names(get_consensus(.)) |>
           # change to double dash, otherwise fmt_markdown turns it into a list (ul)
@@ -47,16 +54,6 @@ gtseq <- function(
       ),
       missing = ""
     ) |>
-    ## style consensus sequence
-    ### make sure that the consensus sequence elements are centered
-    gt::tab_style(
-      style = gt::cell_text(align = "center"),
-      locations = gt::cells_grand_summary(columns = contains(names_prefix))
-    ) |>
-    gt::tab_style(
-      style = gt::cell_borders(sides = "bottom", style = "hidden"),
-      locations = list(gt::cells_grand_summary(rows = 1), gt::cells_stub_grand_summary(rows = 1))
-    ) |>
     # style the sequence elements: center elements, adjust size
     gt::tab_style(
       style = gt::cell_text(
@@ -66,12 +63,9 @@ gtseq <- function(
       ),
       locations = list(gt::cells_body(columns = contains(names_prefix)), gt::cells_grand_summary(columns = contains(names_prefix)))
     ) |>
-    gt::cols_width(
-      1 ~ px(60),
-      name ~ px(50),
-      start ~ px(40),
-      everything() ~ px(13)
-    ) |>
+    # gt::cols_width(
+    #   contains(name_prefix) ~ gt::px(13)
+    # ) |>
     gt::cols_align("right", group:start) |>
     # breaks
     gt::cols_label_with(
@@ -83,7 +77,7 @@ gtseq <- function(
       style = list(
         gt::cell_borders(
           sides = "all",
-          weight = px(0)
+          weight = gt::px(0)
         )
       ),
       locations = list(
@@ -94,16 +88,18 @@ gtseq <- function(
     gt::tab_options(
 
       # adjust padding in the cell body
-      data_row.padding.horizontal = px(2),
-      data_row.padding = px(2),
+      data_row.padding.horizontal = gt::px(2),
+      data_row.padding = gt::px(2),
 
       # adjust padding in the grand summary
       # Noting that padding creates space between the bars (which have 100% width)
-      grand_summary_row.padding.horizontal = px(0),
-      grand_summary_row.padding = px(2),
+      grand_summary_row.padding.horizontal = gt::px(0),
+      grand_summary_row.padding = gt::px(2),
 
-      # # remove borders
-      table.border.top.style = "hidden",
-      grand_summary_row.border.width = px(2)
-    )
+      #  remove borders
+      grand_summary_row.border.width = gt::px(2)
+    ) |> 
+  
+  # palette
+    gt::data_color(columns = dplyr::contains(names_prefix), fn = apply_color_to_aa('Chemistry') )
 }
