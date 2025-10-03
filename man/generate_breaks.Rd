@@ -15,3 +15,9 @@ a vector of column names at every \code{width} position
 \description{
 Give the table's position columns, treat as a numerical axis, and generates breaks using \code{scales::breaks_width}
 }
+\examples{
+
+library(dplyr)
+cnames <- msa |> split_sequences(seq_column = seq) |> dplyr::select(dplyr::contains("pos_")) |> colnames()
+generate_breaks(cnames)
+}
