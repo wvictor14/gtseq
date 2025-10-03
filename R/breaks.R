@@ -7,20 +7,16 @@
 #' @examples
 #'
 #' library(dplyr)
-#' cnames <- msa |>
-#'   split_sequences(seq_column = seq) |>
-#'   select(contains("pos_")) |>
-#'   colnames()
+#' cnames <- msa |> split_sequences(seq_column = seq) |> dplyr::select(dplyr::contains("pos_")) |> colnames()
 #' generate_breaks(cnames)
 generate_breaks <- function(cnames, width = 5) {
   n_col <- cnames |> length()
-
-  browser()
+  
   breaks <- scales::breaks_width(width, 0)(c(1, n_col))
 
   # handle case where breaks extend beyond data
   breaks <- intersect(breaks, 1:n_col)
 
-  col_breaks <- colnames(cnames[breaks])
+  col_breaks <- cnames[breaks]
   return(col_breaks)
 }
