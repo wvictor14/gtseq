@@ -1,12 +1,13 @@
 #' @examples
 #'
-#' msa |> gtseq(seq)
+#' msa |> gtseq(seq_column = seq)
 gtseq <- function(
     df,
     seq_column,
+    names_prefix = "pos_",
     # gt() arguments
     rowname_col = NULL,
-    groupname_col = dplyr::group_vars(data),
+    groupname_col = dplyr::group_vars(df),
     process_md = FALSE,
     caption = NULL,
     rownames_to_stub = FALSE,
@@ -15,8 +16,8 @@ gtseq <- function(
     id = NULL,
     locale = getOption("gt.locale"),
     row_group.sep = getOption("gt.row_group.sep", " - ")) {
-  tbl_data <- df |> split_sequences(seq_column = seq, names_prefix = "seq_")
-
+  tbl_data <- df |> split_sequences(seq_column = {{ seq_column }}, names_prefix = names_prefix)
+  breaks <- generate_breaks(stringr::str_subset(colnames(tbl_data), names_prefix))
   tbl_data |>
     gt::gt(
       rowname_col = rowname_col,
@@ -32,7 +33,7 @@ gtseq <- function(
     ) |>
     # add consensus sequence
     gt::grand_summary_rows(
-      columns = contains("pos"),
+      columns = contains(names_prefix),
       fns = list(
         Consensus ~ get_consensus_return_bar(.) |>
           div(style = "width:100%;height:50px;") |>
@@ -50,7 +51,7 @@ gtseq <- function(
     ### make sure that the consensus sequence elements are centered
     gt::tab_style(
       style = gt::cell_text(align = "center"),
-      locations = gt::cells_grand_summary(columns = contains("pos_"))
+      locations = gt::cells_grand_summary(columns = contains(names_prefix))
     ) |>
     gt::tab_style(
       style = gt::cell_borders(sides = "bottom", style = "hidden"),
@@ -63,7 +64,7 @@ gtseq <- function(
         align = "center",
         indent = 0
       ),
-      locations = list(gt::cells_body(columns = contains("pos_")), gt::cells_grand_summary(columns = contains("pos_")))
+      locations = list(gt::cells_body(columns = contains(names_prefix)), gt::cells_grand_summary(columns = contains(names_prefix)))
     ) |>
     gt::cols_width(
       1 ~ px(60),
@@ -74,8 +75,8 @@ gtseq <- function(
     gt::cols_align("right", group:start) |>
     # breaks
     gt::cols_label_with(
-      fn = ~ ifelse(. %in% breaks, ., "") |> stringr::str_remove("pos_"),
-      columns = contains("pos_")
+      fn = ~ ifelse(. %in% breaks, ., "") |> stringr::str_remove(names_prefix),
+      columns = contains(names_prefix)
     ) |>
     # remove borders from the table body
     gt::tab_style(
