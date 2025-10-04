@@ -18,6 +18,6 @@ generate_breaks <- function(x, width = 5) {
   # handle case where breaks extend beyond data
   breaks <- intersect(breaks, 1:n_col)
 
-  col_breaks <- cnames[breaks]
+  col_breaks <- x[breaks]
   return(col_breaks)
 }
