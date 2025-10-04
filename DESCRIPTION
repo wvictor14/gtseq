@@ -16,4 +16,4 @@ Imports:
     htmltools,
     stringr,
     tidyr
-URL: http://victoryuan.com/gtseq/
+URL: http://victoryuan.com/gtseq/, https://github.com/wvictor14/gtseq
