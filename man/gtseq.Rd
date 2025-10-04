@@ -21,6 +21,9 @@ gtseq(
   row_group.sep = getOption("gt.row_group.sep", " - ")
 )
 }
+\arguments{
+\item{seq_column}{the column that contains biological sequences}
+}
 \value{
 a gt table object
 }

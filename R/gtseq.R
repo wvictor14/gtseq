@@ -4,7 +4,9 @@
 #' - splits the seq column into 1 per element
 #' - applies a color palette to amino acids
 #' 
+#' @param seq_column the column that contains biological sequences
 #' @return a gt table object
+#' @export
 #' @examples
 #'
 #' msa |> gtseq(seq_column = seq)
