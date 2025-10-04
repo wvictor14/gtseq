@@ -34,7 +34,7 @@
     </div>
 
     <div class="ref-description section level2">
-    <p>Give the table's position columns, treat as a numerical axis, and generates breaks using <code>scales::breaks_width</code></p>
+    <p>Give the table's position columns, treat as a numerical axis, and generates breaks using <code><a href="https://scales.r-lib.org/reference/breaks_width.html" class="external-link">scales::breaks_width</a></code></p>
     </div>
 
     <div class="section level2">
@@ -69,7 +69,9 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     intersect, setdiff, setequal, union</span>
 <span class="r-in"><span><span class="va">cnames</span> <span class="op">&lt;-</span> <span class="va">msa</span> <span class="op">|&gt;</span> <span class="fu"><a href="split_sequences.html">split_sequences</a></span><span class="op">(</span>seq_column <span class="op">=</span> <span class="va">seq</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">contains</a></span><span class="op">(</span><span class="st">"pos_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">generate_breaks</span><span class="op">(</span><span class="va">cnames</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in loadNamespace(x):</span> there is no package called ‘scales’</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "pos_5"  "pos_10" "pos_15" "pos_20" "pos_25" "pos_30" "pos_35" "pos_40"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "pos_45" "pos_50" "pos_55" "pos_60" "pos_65" "pos_70" "pos_75" "pos_80"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "pos_85" "pos_90" "pos_95"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
