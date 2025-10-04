@@ -2,6 +2,7 @@
 # gtseq
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/wvictor14/gtseq/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/wvictor14/gtseq/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 This R package was developed as part of the 2025 posit table contest. See my [submission](https://github.com/rich-iannone/table-contest/discussions/10) for details.
