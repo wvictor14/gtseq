@@ -5,6 +5,7 @@
 #' @param df expects 1 row per sequence.
 #' @param seq_column the column that contains sequence data
 #' @param names_prefix a prefix to add to the resulting columns. Useful for column selection in downstream analysis with gt
+#' @export
 #' @examples
 #'
 #' msa |> split_sequences(seq_column = seq)
