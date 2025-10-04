@@ -52,6 +52,7 @@ get_consensus <- function(x) {
 #'
 #' @param x a vector
 #' @return html div
+#' @export
 #' @examples
 #'
 #' get_consensus_return_bar(c("dog", "dog", "cat"))
