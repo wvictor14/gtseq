@@ -10,8 +10,6 @@ apply_color_to_aa(
 }
 \arguments{
 \item{palette}{name of the palette}
-
-\item{letter}{string input}
 }
 \value{
 a coloring function based on chosen palette

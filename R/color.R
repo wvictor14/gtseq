@@ -1,7 +1,6 @@
 #' Coloring function that applies a gtseq palette
 #'
 #' @param palette name of the palette
-#' @param letter string input
 #'
 #' @return a coloring function based on chosen palette
 #' @export

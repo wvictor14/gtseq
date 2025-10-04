@@ -1,8 +1,9 @@
-#' Create a simply html bar chart
+#' Create a Simple html Bar For a Bar Chart
 #'
 #' arent div is set to 100% width and height
 #'
 #' @param bar_height a number between 0 and 1 that sets the height of the bar as a percentage of the total height of the container (the parent) div
+#' @param bar_color color of the bars
 #' @param parent_div_height valid css unit for height of the parent div
 #' @param parent_div_width valid css unit for width of the parent div
 #' @export

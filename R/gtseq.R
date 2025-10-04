@@ -7,6 +7,7 @@
 #' @param seq_column the column that contains biological sequences
 #' @return a gt table object
 #' @export
+#' @inheritParams gt::gt
 #' @examples
 #'
 #' msa |> gtseq(seq_column = seq)

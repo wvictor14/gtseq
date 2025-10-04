@@ -2,7 +2,7 @@
 % Please edit documentation in R/consensus.R
 \name{create_html_vertical_bar}
 \alias{create_html_vertical_bar}
-\title{Create a simply html bar chart}
+\title{Create a Simple html Bar For a Bar Chart}
 \usage{
 create_html_vertical_bar(
   bar_height = 0.5,
@@ -13,6 +13,8 @@ create_html_vertical_bar(
 }
 \arguments{
 \item{bar_height}{a number between 0 and 1 that sets the height of the bar as a percentage of the total height of the container (the parent) div}
+
+\item{bar_color}{color of the bars}
 
 \item{parent_div_height}{valid css unit for height of the parent div}
 

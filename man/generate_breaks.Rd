@@ -4,10 +4,12 @@
 \alias{generate_breaks}
 \title{takes a vector as input, generates breaks every n times}
 \usage{
-generate_breaks(cnames, width = 5)
+generate_breaks(x, width = 5)
 }
 \arguments{
 \item{x}{a vector of column names}
+
+\item{width}{the distance between each break}
 }
 \value{
 a vector of column names at every \code{width} position

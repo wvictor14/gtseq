@@ -23,6 +23,90 @@ gtseq(
 }
 \arguments{
 \item{seq_column}{the column that contains biological sequences}
+
+\item{rowname_col}{\emph{Column(s) for row names/labels from \code{data}}
+
+\verb{vector<character>} // \emph{default:} \code{NULL} (\code{optional})
+
+The column name(s) in the input \code{data} table to use as row labels to be
+placed in the table stub. If multiple column names are provided, they will
+create a hierarchical stub layout where values from the leftmost column form
+the highest level of the hierarchy, proceeding to individual row identifiers
+in the rightmost column. If the \code{rownames_to_stub} option is \code{TRUE} then any
+column name provided to \code{rowname_col} will be ignored.}
+
+\item{groupname_col}{\emph{Column for group names/labels from \code{data}}
+
+\verb{scalar<character>} // \emph{default:} \code{NULL} (\code{optional})
+
+The column name in the input \code{data} table to use as group labels for
+generation of row groups. If the input \code{data} table has the \code{grouped_df}
+class (through use of \code{\link[dplyr:group_by]{dplyr::group_by()}} or associated \verb{group_by*()}
+functions) then any input here is ignored.}
+
+\item{process_md}{\emph{Process Markdown in \code{rowname_col} and \code{groupname_col}}
+
+\verb{scalar<logical>} // \emph{default:} \code{FALSE}
+
+Should the contents of the \code{rowname_col} and \code{groupname_col} be interpreted
+as Markdown? By default this won't happen.}
+
+\item{caption}{\emph{Table caption text}
+
+\verb{scalar<character>} // \emph{default:} \code{NULL} (\code{optional})
+
+An optional table caption to use for cross-referencing in R Markdown,
+Quarto, or \strong{bookdown}.}
+
+\item{rownames_to_stub}{\emph{Use data frame row labels in the stub}
+
+\verb{scalar<logical>} // \emph{default:} \code{FALSE}
+
+An option to take rownames from the input \code{data} table (should they be
+available) as row labels in the display table stub.}
+
+\item{row_group_as_column}{\emph{Mode for displaying row group labels in the stub}
+
+\verb{scalar<logical>} // \emph{default:} \code{FALSE}
+
+An option that alters the display of row group labels. By default this is
+\code{FALSE} and row group labels will appear in dedicated rows above their
+respective groups of rows. If \code{TRUE} row group labels will occupy a
+secondary column in the table stub.}
+
+\item{auto_align}{\emph{Automatic alignment of column values and labels}
+
+\verb{scalar<logical>} // \emph{default:} \code{TRUE}
+
+Optionally have column data be aligned depending on the content contained
+in each column of the input \code{data}. Internally, this calls
+\code{cols_align(align = "auto")} for all columns.}
+
+\item{id}{\emph{The table ID}
+
+\verb{scalar<character>} // \emph{default:} \code{NULL} (\code{optional})
+
+By default (with \code{NULL}) this will be a random, ten-letter ID as generated
+by using \code{\link[gt:random_id]{random_id()}}. A custom table ID can be used here by
+providing a character value.}
+
+\item{locale}{\emph{Locale identifier}
+
+\verb{scalar<character>} // \emph{default:} \code{getOption("gt.locale")} (\code{optional})
+
+An optional locale identifier that can be set as the default locale for all
+functions that take a \code{locale} argument. Examples include \code{"en"} for
+English (United States) and \code{"fr"} for French (France). We can call
+\code{\link[gt:info_locales]{info_locales()}} as a useful reference for all of the locales that are supported.
+If set, \code{options(gt.locale)} is also consulted.}
+
+\item{row_group.sep}{\emph{Separator text for multiple row group labels}
+
+\verb{scalar<character>} // \emph{default:} \code{getOption("gt.row_group.sep", " - ")}
+
+The separator to use between consecutive group names (a possibility when
+providing \code{data} as a \code{grouped_df} with multiple groups) in the displayed
+row group label.}
 }
 \value{
 a gt table object
