@@ -20,6 +20,9 @@ Give the table's position columns, treat as a numerical axis, and generates brea
 \examples{
 
 library(dplyr)
-cnames <- msa |> split_sequences(seq_column = seq) |> dplyr::select(dplyr::contains("pos_")) |> colnames()
+cnames <- msa |> 
+ split_sequences(seq_column = seq) |> 
+ dplyr::select(dplyr::contains("pos_")) |> 
+ colnames()
 generate_breaks(cnames)
 }
