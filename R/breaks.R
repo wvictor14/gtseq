@@ -8,7 +8,10 @@
 #' @examples
 #'
 #' library(dplyr)
-#' cnames <- msa |> split_sequences(seq_column = seq) |> dplyr::select(dplyr::contains("pos_")) |> colnames()
+#' cnames <- msa |> 
+#'  split_sequences(seq_column = seq) |> 
+#'  dplyr::select(dplyr::contains("pos_")) |> 
+#'  colnames()
 #' generate_breaks(cnames)
 generate_breaks <- function(x, width = 5) {
   n_col <- x |> length()
