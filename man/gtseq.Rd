@@ -22,7 +22,11 @@ gtseq(
 )
 }
 \arguments{
+\item{df}{a data frame}
+
 \item{seq_column}{the column that contains biological sequences}
+
+\item{names_prefix}{the prefix to add to each position column}
 
 \item{rowname_col}{\emph{Column(s) for row names/labels from \code{data}}
 
