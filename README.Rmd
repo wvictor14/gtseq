@@ -38,7 +38,7 @@ gtseq provides several functions to help create `gt` tables of biological sequen
 
 Use `gtseq` on a `data.frame` with a column containing amino acid sequences:
 
-``` {r}
+```r
 library(gtseq)
 
 msa |> gtseq(seq_column = seq)
@@ -50,7 +50,7 @@ For further customization use the lower-level functions:
 
 `split_sequences` for structuring the data for `gt`, the output of this function retains the 1 sequence per row structure, but splits each element of the sequence data, for maximum flexibility for customization in `gt`
 
-```{r}
+```r
 library(gt)
 msa |> split_sequences(seq_column = seq)
 ```
@@ -61,13 +61,13 @@ msa |> split_sequences(seq_column = seq)
 
 A function is returned, which takes an input and colors according to a given palette
 
-```{r}
+```r
 apply_color_to_aa("Chemistry")(c("A", "K", "L", "-"))
 ```
 
 This function can be directly passed to `gt::data_color`
 
-```{r}
+```r
 msa |>
   split_sequences(seq_column = seq) |>
   gt() |>
@@ -79,7 +79,7 @@ msa |>
 `get_consensus` for adding consensus sequence and frequency data. Pass to either
 `gt::grand_summary_rows` or `gt::summary_rows`.
 
-```{r}
+```r
 msa |>
   split_sequences(seq_column = seq) |>
   gt() |>
@@ -97,7 +97,7 @@ msa |>
 Takes a vector and returns every nth element, based on `scales::breaks_width`
 
 
-```{r}
+```r
 library(dplyr)
 cnames <- msa |>
   split_sequences(seq_column = seq) |>
@@ -109,7 +109,7 @@ breaks
 
 Which allows only applying a label to every nth position of the sequences with `gt::cols_label_with`
 
-```{r}
+```r
 msa |>
   split_sequences(seq_column = seq) |>
   gt() |>
