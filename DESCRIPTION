@@ -1,6 +1,6 @@
 Package: gtseq
 Title: Visualizing biological sequences with gt 
-Version: 0.0.0.9003
+Version: 0.0.1
 Authors@R: 
     person("Victor", "Yuan", , "victor.yuan@gmail.com", role = c("aut", "cre"))
 Description: Traditionally, analysis of related biological sequences through multiple sequence alignment (MSA) is done through standalone software programs like [Jalview](https://www.jalview.org/), [Rasmol](https://www.openrasmol.org/), and many others, or online web apps like [NCBI's msa viewer](https://www.ncbi.nlm.nih.gov/projects/msaviewer/). Recent additions like [`ggmsa`](https://yulab-smu.top/ggmsa/), Bioconductor's [`msa`](https://www.bioconductor.org/packages/release/bioc/html/msa.html), among others, have brought visualization and analysis to the R ecosystem. But sequences are not often visualized in table packages like `gt`. This package facilitates bringing these traditional bioinformatic activities to R and `gt`.
