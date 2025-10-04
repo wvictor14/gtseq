@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>What the Package Does (One Line, Title Case) • gtseq</title>
+<title>Visualizing biological sequences with gt • gtseq</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="What the Package Does (One Line, Title Case)">
-<meta name="description" content="What the package does (one paragraph).">
-<meta property="og:description" content="What the package does (one paragraph).">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Visualizing biological sequences with gt">
+<meta name="description" content="Traditionally, analysis of related biological sequences through multiple sequence alignment (MSA) is done through standalone software programs like [Jalview](https://www.jalview.org/), [Rasmol](https://www.openrasmol.org/), and many others, or online web apps like [NCBIs msa viewer](https://www.ncbi.nlm.nih.gov/projects/msaviewer/). Recent additions like [`ggmsa`](https://yulab-smu.top/ggmsa/), Bioconductors [`msa`](https://www.bioconductor.org/packages/release/bioc/html/msa.html), among others, have brought visualization and analysis to the R ecosystem. But sequences are not often visualized in table packages like `gt`. This package facilitates bringing these traditional bioinformatic activities to R and `gt`.">
+<meta property="og:description" content="Traditionally, analysis of related biological sequences through multiple sequence alignment (MSA) is done through standalone software programs like [Jalview](https://www.jalview.org/), [Rasmol](https://www.openrasmol.org/), and many others, or online web apps like [NCBIs msa viewer](https://www.ncbi.nlm.nih.gov/projects/msaviewer/). Recent additions like [`ggmsa`](https://yulab-smu.top/ggmsa/), Bioconductors [`msa`](https://www.bioconductor.org/packages/release/bioc/html/msa.html), among others, have brought visualization and analysis to the R ecosystem. But sequences are not often visualized in table packages like `gt`. This package facilitates bringing these traditional bioinformatic activities to R and `gt`.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -44,12 +44,46 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9">
-What the package does (one paragraph).
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="gtseq">gtseq<a class="anchor" aria-label="anchor" href="#gtseq"></a>
+</h1></div>
+<!-- badges: start -->
+<!-- badges: end -->
+<p>Traditionally, analysis of related biological sequences through multiple sequence alignment (MSA) is done through standalone software programs like <a href="https://www.jalview.org/" class="external-link">Jalview</a>, <a href="https://www.openrasmol.org/" class="external-link">Rasmol</a>, and many others, or online web apps like <a href="https://www.ncbi.nlm.nih.gov/projects/msaviewer/" class="external-link">NCBI’s msa viewer</a>. Recent additions like <a href="https://yulab-smu.top/ggmsa/" class="external-link"><code>ggmsa</code></a>, Bioconductor’s <a href="https://www.bioconductor.org/packages/release/bioc/html/msa.html" class="external-link"><code>msa</code></a>, among others, have brought visualization and analysis to the R ecosystem. But sequences are not often visualized in table packages like <code>gt</code>. This package facilitates bringing these traditional bioinformatic activities to R and <code>gt</code>.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the development version of gtseq from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"wvictor14/gtseq"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
+<p>gtseq provides several functions to help create <code>gt</code> tables of biological sequences.</p>
+<p>Use <code>gtseq</code> on a <code>data.frame</code> with a column containing amino acid sequences:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://victoryuan.com/gtseq/">gtseq</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">msa</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/gtseq.html">gtseq</a></span><span class="op">(</span>seq_column <span class="op">=</span> <span class="va">seq</span><span class="op">)</span></span></code></pre></div>
+<p>For further customization use the lower-level functions:</p>
+<ul>
+<li>
+<code>split_sequences</code> for structuring the data for <code>gt</code>
+</li>
+<li>
+<code>apply_color_to_aa</code> for coloring amino acids by one of the included palettes</li>
+<li>
+<code>get_consensus</code> for adding consensus sequence and frequency data</li>
+</ul>
+</div>
+</div>
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li>`use_mit_license()`, `use_gpl3_license()` or friends to pick a license</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 
@@ -64,7 +98,7 @@ What the package does (one paragraph).
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>First Last <br><small class="roles"> Author, maintainer </small>   </li>
+<li>Victor Yuan <br><small class="roles"> Author, maintainer </small>   </li>
 </ul>
 </div>
 
@@ -75,7 +109,7 @@ What the package does (one paragraph).
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by First Last.</p>
+  <p>Developed by Victor Yuan.</p>
 </div>
 
 <div class="pkgdown-footer-right">
