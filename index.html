@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">gtseq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,11 +32,13 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/wvictor14/gtseq/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -49,6 +51,7 @@
 </h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
+<p>This R package was developed as part of the 2025 posit table contest. See my <a href="https://github.com/rich-iannone/table-contest/discussions/10" class="external-link">submission</a> for details.</p>
 <p>Traditionally, analysis of related biological sequences through multiple sequence alignment (MSA) is done through standalone software programs like <a href="https://www.jalview.org/" class="external-link">Jalview</a>, <a href="https://www.openrasmol.org/" class="external-link">Rasmol</a>, and many others, or online web apps like <a href="https://www.ncbi.nlm.nih.gov/projects/msaviewer/" class="external-link">NCBI’s msa viewer</a>. Recent additions like <a href="https://yulab-smu.top/ggmsa/" class="external-link"><code>ggmsa</code></a>, Bioconductor’s <a href="https://www.bioconductor.org/packages/release/bioc/html/msa.html" class="external-link"><code>msa</code></a>, among others, have brought visualization and analysis to the R ecosystem. But sequences are not often visualized in table packages like <code>gt</code>. This package facilitates bringing these traditional bioinformatic activities to R and <code>gt</code>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -79,7 +82,14 @@
 </ul>
 </div>
 </div>
-  </main><aside class="col-md-3"><div class="license">
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/wvictor14/gtseq/" class="external-link">Browse source code</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
