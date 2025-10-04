@@ -12,9 +12,12 @@ Depends:
     R (>= 3.5)
 LazyData: true
 Imports: 
+    dplyr,
     glue,
+    gt,
     htmltools,
     scales,
     stringr,
+    tibble,
     tidyr
 URL: http://victoryuan.com/gtseq/, https://github.com/wvictor14/gtseq
