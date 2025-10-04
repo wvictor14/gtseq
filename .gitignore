@@ -3,3 +3,4 @@
 docs
 .Renviron
 /.quarto/
+inst/doc

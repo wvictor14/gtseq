@@ -1,0 +1,118 @@
+---
+title: "getting-started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{getting-started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(gtseq)
+```
+
+
+## Example
+
+gtseq provides several functions to help create `gt` tables of
+biological sequences. Although the philosophy is to provide small
+modular functions to allow for high customizability, `gtseq::gtseq` is a
+wrapper function provided to quickly and efficiently explore sequences.
+
+Use `gtseq` on a `data.frame` with a column containing amino acid
+sequences:
+
+```{r}
+library(gtseq)
+
+msa |> gtseq(seq_column = seq)
+```
+
+For further customization use the lower-level functions:
+
+## `split_sequences`
+
+`split_sequences` for structuring the data for `gt`, the output of this
+function retains the 1 sequence per row structure, but splits each
+element of the sequence data, for maximum flexibility for customization
+in `gt`
+
+```{r}
+library(gt)
+msa |> split_sequences(seq_column = seq)
+```
+
+## `apply_color_to_aa`
+
+`apply_color_to_aa` is for coloring amino acids by one of the included
+palettes
+
+A function is returned, which takes an input and colors according to a
+given palette
+
+```{r}
+apply_color_to_aa("Chemistry")(c("A", "K", "L", "-"))
+```
+
+This function can be directly passed to `gt::data_color`
+
+```{r}
+msa |>
+  split_sequences(seq_column = seq) |>
+  gt() |>
+  data_color(columns = contains('pos_'), fn = apply_color_to_aa('Chemistry'))
+```
+
+## `get_consensus`
+
+`get_consensus` for adding consensus sequence and frequency data. Pass
+to either `gt::grand_summary_rows` or `gt::summary_rows`.
+
+```{r}
+msa |>
+  split_sequences(seq_column = seq) |>
+  gt() |>
+  data_color(columns = contains('pos_'), fn = apply_color_to_aa('Chemistry')) |>
+  grand_summary_rows(
+    columns = contains('pos_'),
+    fns = list(
+      consensus = ~ get_consensus(.)
+    )
+  )
+```
+
+## `generate_breaks`
+
+Takes a vector and returns every nth element, based on
+`scales::breaks_width`
+
+```{r}
+library(dplyr)
+cnames <- msa |>
+  split_sequences(seq_column = seq) |>
+  select(contains('pos_')) |>
+  colnames()
+breaks <- generate_breaks(cnames)
+breaks
+```
+
+Which allows only applying a label to every nth position of the
+sequences with `gt::cols_label_with`
+
+```{r}
+msa |>
+  split_sequences(seq_column = seq) |>
+  gt() |>
+  data_color(columns = contains('pos_'), fn = apply_color_to_aa('Chemistry')) |>
+  cols_label_with(
+    columns = contains('pos_'),
+    fn = ~ ifelse(. %in% breaks, gsub('pos_', '', .), '')
+  )
+```

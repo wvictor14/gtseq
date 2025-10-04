@@ -21,3 +21,7 @@ Imports:
     tibble,
     tidyr
 URL: http://victoryuan.com/gtseq/, https://github.com/wvictor14/gtseq
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
