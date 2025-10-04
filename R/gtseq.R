@@ -45,7 +45,7 @@ gtseq <- function(
     ) |>
     # add consensus sequence
     gt::grand_summary_rows(
-      columns = tidyselect::contains(names_prefix),
+      columns = dplyr::contains(names_prefix),
       fns = list(
         Consensus ~ get_consensus_return_bar(.) |>
           htmltools::div(style = "width:100%;height:50px;") |>
@@ -66,13 +66,13 @@ gtseq <- function(
         align = "center",
         indent = 0
       ),
-      locations = list(gt::cells_body(columns = tidyselect::contains(names_prefix)), gt::cells_grand_summary(columns = contains(names_prefix)))
+      locations = list(gt::cells_body(columns = dplyr::contains(names_prefix)), gt::cells_grand_summary(columns = contains(names_prefix)))
     ) |>
     
     # breaks
     gt::cols_label_with(
       fn = ~ ifelse(. %in% breaks, ., "") |> stringr::str_remove(names_prefix),
-      columns = tidyselect::contains(names_prefix)
+      columns = dplyr::contains(names_prefix)
     ) |>
     # remove borders from the table body
     gt::tab_style(
@@ -103,5 +103,5 @@ gtseq <- function(
     ) |> 
   
   # palette
-    gt::data_color(columns = tidyselect::contains(names_prefix), fn = apply_color_to_aa('Chemistry') )
+    gt::data_color(columns = dplyr::contains(names_prefix), fn = apply_color_to_aa('Chemistry') )
 }
